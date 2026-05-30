@@ -1,0 +1,53 @@
+{
+  "name": "AgentInsight",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "insight_type": {
+      "type": "string",
+      "enum": [
+        "anomaly",
+        "correlation",
+        "recommendation",
+        "alert",
+        "trend"
+      ],
+      "default": "correlation"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "critical"
+      ],
+      "default": "info"
+    },
+    "description": {
+      "type": "string"
+    },
+    "sources_involved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "action_suggested": {
+      "type": "string"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    },
+    "confidence": {
+      "type": "number",
+      "description": "AI confidence score 0-100"
+    }
+  },
+  "required": [
+    "title",
+    "insight_type"
+  ]
+}

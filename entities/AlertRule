@@ -1,0 +1,81 @@
+{
+  "name": "AlertRule",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "condition_type": {
+      "type": "string",
+      "enum": [
+        "error_rate_spike",
+        "error_count_threshold",
+        "source_offline",
+        "new_critical_record",
+        "incident_created",
+        "custom_keyword"
+      ],
+      "description": "What triggers this alert"
+    },
+    "threshold": {
+      "type": "number",
+      "description": "Numeric threshold value"
+    },
+    "keyword": {
+      "type": "string",
+      "description": "For custom_keyword condition"
+    },
+    "source_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Sources to watch (empty = all)"
+    },
+    "severity_output": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "high"
+    },
+    "notify_in_app": {
+      "type": "boolean",
+      "default": true
+    },
+    "notify_email": {
+      "type": "boolean",
+      "default": false
+    },
+    "email_recipients": {
+      "type": "string",
+      "description": "Comma-separated emails"
+    },
+    "trigger_webhooks": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_triggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "trigger_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "condition_type"
+  ]
+}

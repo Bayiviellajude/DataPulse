@@ -1,0 +1,58 @@
+{
+  "name": "WebhookConfig",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Friendly name for this webhook"
+    },
+    "url": {
+      "type": "string",
+      "description": "HTTPS endpoint to POST to"
+    },
+    "secret": {
+      "type": "string",
+      "description": "Optional HMAC signing secret"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Events that trigger this webhook: incident.created, incident.resolved, insight.new, record.error, alert.triggered"
+    },
+    "severity_filter": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Only fire for these severities (empty = all)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_triggered": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failed",
+        "pending"
+      ],
+      "default": "pending"
+    },
+    "failure_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "url",
+    "events"
+  ]
+}

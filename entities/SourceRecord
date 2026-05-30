@@ -1,0 +1,71 @@
+{
+  "name": "SourceRecord",
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "description": "ID of the parent DataSource"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "github",
+        "slack",
+        "sentry",
+        "metrics",
+        "custom_api",
+        "pagerduty",
+        "datadog",
+        "jira",
+        "linear"
+      ]
+    },
+    "record_type": {
+      "type": "string",
+      "description": "e.g. commit, message, error, metric_point, incident, monitor, issue"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "error",
+        "critical"
+      ],
+      "default": "info"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Source-specific data fields"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "external_url": {
+      "type": "string",
+      "description": "Link to the record in the external system"
+    }
+  },
+  "required": [
+    "source_type",
+    "record_type",
+    "title",
+    "timestamp"
+  ]
+}

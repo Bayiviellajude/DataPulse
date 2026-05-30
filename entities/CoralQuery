@@ -1,0 +1,53 @@
+{
+  "name": "CoralQuery",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Friendly name for the query"
+    },
+    "sql": {
+      "type": "string",
+      "description": "SQL-like query string using Coral syntax"
+    },
+    "sources_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of source types referenced"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "running",
+        "completed",
+        "error"
+      ],
+      "default": "draft"
+    },
+    "result_count": {
+      "type": "number",
+      "default": 0
+    },
+    "result_data": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Query result rows"
+    },
+    "execution_time_ms": {
+      "type": "number"
+    },
+    "ai_generated": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "sql"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "Incident",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "detected",
+        "investigating",
+        "resolved",
+        "dismissed"
+      ],
+      "default": "detected"
+    },
+    "correlated_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Source types involved in this incident"
+    },
+    "correlated_records": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of related SourceRecords"
+    },
+    "ai_analysis": {
+      "type": "string",
+      "description": "AI-generated analysis and recommendation"
+    },
+    "root_cause": {
+      "type": "string"
+    },
+    "detected_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "title",
+    "severity"
+  ]
+}
